@@ -1,4 +1,4 @@
-import { ADD_TODO, COMPLETE_TODO } from './actions';
+import { ADD_TODO, COMPLETE_TODO, SHOW_COMPLETE, SHOW_ALL } from './actions';
 
 // [{text: '코딩', done: false}, {text: '점심먹기', done: false}]
 // { todos : [{text: '코딩', done: false}, {text: '점심먹기', done: false}], filter: 'ALL'}
@@ -24,6 +24,19 @@ export function todoApp(previousState = initialState, action) {
                 }
                 return todo;
             }),
+        };
+    }
+
+    if (action.type === SHOW_COMPLETE) {
+        return {
+            ...previousState,
+            filter: 'COMPLETE',
+        };
+    }
+    if (action.type === SHOW_ALL) {
+        return {
+            ...previousState,
+            filter: 'ALL',
         };
     }
     return previousState;
