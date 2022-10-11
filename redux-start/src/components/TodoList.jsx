@@ -1,10 +1,8 @@
-import useReduxState from '../hooks/useReduxState';
-
-export default function TodoList() {
-    const state = useReduxState();
+// todos를 받아서 보여주기만 하는 컴포넌트 : presentational component
+export default function TodoList({ todos }) {
     return (
         <ul>
-            {state.todos.map((todo) => {
+            {todos.map((todo) => {
                 return <li>{todo.text}</li>;
             })}
         </ul>
